@@ -1,5 +1,5 @@
 {% set name = "ddtrace" %}
-{% set version = "0.42.0" %}
+{% set version = "0.55.4" %}
 
 
 package:
@@ -8,11 +8,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: dba66c7013a4352dfa20ed31e989001250056c89811d1cb5ee10e23dc98bac0a
+  sha256: cdd2e4eaa53e2d70db35a43e1ec416e6d991a62f6d392ac685fa0eda10e11156
 
 build:
-  number: 2
-  skip: true   # [py==30 or py==31 or py==32 or py==33 or py==34]
+  number: 0
+  skip: true  # [py==30 or py==31 or py==32 or py==33 or py==34]
   entry_points:
     - ddtrace-run = ddtrace.commands.ddtrace_run:main
     - pyddprofile = ddtrace.profiling.__main__:main
