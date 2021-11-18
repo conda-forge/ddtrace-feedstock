@@ -213,4 +213,5 @@ Feedstock Maintainers
 =====================
 
 * [@SarvarD](https://github.com/SarvarD/)
+* [@aymondebroglie](https://github.com/aymondebroglie/)
 
