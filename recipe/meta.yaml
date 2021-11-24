@@ -24,9 +24,11 @@ requirements:
   host:
     - cython
     - python
+    - pip
     - setuptools_scm >=4
   run:
     - python
+    - pip
     - enum34  # [py<34]
     - funcsigs >=1.0.0  # [py==27]
     - intervaltree
