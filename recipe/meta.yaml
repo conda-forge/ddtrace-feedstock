@@ -23,6 +23,7 @@ requirements:
     - {{ compiler('c') }}
   host:
     - cython
+    - python
     - setuptools_scm >=4
   run:
     - enum34  # [py<34]
