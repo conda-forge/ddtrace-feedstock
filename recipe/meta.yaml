@@ -26,6 +26,7 @@ requirements:
     - python
     - setuptools_scm >=4
   run:
+    - python
     - enum34  # [py<34]
     - funcsigs >=1.0.0  # [py==27]
     - intervaltree
