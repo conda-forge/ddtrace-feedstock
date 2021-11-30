@@ -34,7 +34,7 @@ requirements:
     - pip
     - enum34  # [py<34]
     - funcsigs >=1.0.0  # [py==27]
-    - typing # [py<35]
+    - typing  # [py<35]
     - intervaltree
     - protobuf >=3
     - tenacity >=5
