@@ -14,11 +14,8 @@ build:
   number: 0
   skip: true  # [py==30 or py==31 or py==32 or py==33 or py==34]
   entry_points:
-    console_scripts:
-      - ddtrace-run = ddtrace.commands.ddtrace_run:main
-      - pyddprofile = ddtrace.profiling.__main__:main
-    pytest11:
-      - ddtrace = ddtrace.contrib.pytest.plugin
+    - ddtrace-run = ddtrace.commands.ddtrace_run:main
+    - pyddprofile = ddtrace.profiling.__main__:main
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
