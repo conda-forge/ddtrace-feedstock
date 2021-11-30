@@ -1,5 +1,5 @@
 {% set name = "ddtrace" %}
-{% set version = "0.44.0" %}
+{% set version = "0.45.0" %}
 
 
 package:
@@ -8,14 +8,17 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: bf18821061ce44c0e4b33da63f2e0bdf205887924a58f826ec8bd3ae550a919a
+  sha256: d007d29272ee003d4f82e2dae6ef3637ed222dec71ffcdcf5ce820bb9c97af4e
 
 build:
   number: 0
-  skip: true  # [py==30 or py==31 or py==32 or py==33 or py==34 or (py==39 and win) or (py==310 and win) ]
+  skip: true  # [py==30 or py==31 or py==32 or py==33 or py==34]
   entry_points:
-    - ddtrace-run = ddtrace.commands.ddtrace_run:main
-    - pyddprofile = ddtrace.profiling.__main__:main
+    console_scripts:
+      - ddtrace-run = ddtrace.commands.ddtrace_run:main
+      - pyddprofile = ddtrace.profiling.__main__:main
+    pytest11:
+      - ddtrace = ddtrace.contrib.pytest.plugin
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -31,6 +34,7 @@ requirements:
     - pip
     - enum34  # [py<34]
     - funcsigs >=1.0.0  # [py==27]
+    - typing # [py<35]
     - intervaltree
     - protobuf >=3
     - tenacity >=5
