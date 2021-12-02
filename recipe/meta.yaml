@@ -1,5 +1,5 @@
 {% set name = "ddtrace" %}
-{% set version = "0.47.0" %}
+{% set version = "0.48.0" %}
 
 
 package:
@@ -8,14 +8,13 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: 49994c8ca2c7c84dd2ef90a164a717b7f88568f8d145156a7c0d1019597e4ac7
+  sha256: ac9d286f165fab9382ab034365df69b6c87d1d955c0d373766627032f8deaca8
 
 build:
   number: 0
   skip: true  # [py==30 or py==31 or py==32 or py==33 or py==34]
   entry_points:
     - ddtrace-run = ddtrace.commands.ddtrace_run:main
-    - pyddprofile = ddtrace.profiling.__main__:main
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -32,7 +31,6 @@ requirements:
     - enum34  # [py<34]
     - funcsigs >=1.0.0  # [py==27]
     - typing  # [py<35]
-    - intervaltree
     - protobuf >=3
     - tenacity >=5
 
