@@ -36,7 +36,7 @@ requirements:
     - packaging >=17.1
     - attrs >=19.2.0
     - six >=1.12.0
-    - pep562 # [py<37]
+    - pep562  # [py<37]
 
 test:
   imports:
