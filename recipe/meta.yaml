@@ -1,5 +1,5 @@
 {% set name = "ddtrace" %}
-{% set version = "0.52.1" %}
+{% set version = "0.53.0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: bdd953c17c64d09b94178feb8a2af8da14df4e5a535e0bb51269ce3781f6e80a 
+  sha256: de0d7b7c0f91b14dc0768b91d5516ff142a9d0b8651e5f76d9a21d951a778cbf 
 
 build:
   number: 0
