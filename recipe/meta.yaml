@@ -31,8 +31,8 @@ requirements:
     - enum34  # [py<34]
     - funcsigs >=1.0.0  # [py==27]
     - typing  # [py<35]
-    - protobuf >=3,<3.18  #[py<3.6]
-    - protobut >=3  #[py>=3.6]
+    - protobuf >=3,<3.18  # [py<3.6]
+    - protobut >=3  # [py>=3.6]
     - tenacity >=5
     - packaging >=17.1
     - attrs >=19.2.0
