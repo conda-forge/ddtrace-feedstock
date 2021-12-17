@@ -49,7 +49,7 @@ test:
 
 about:
   home: https://github.com/DataDog/dd-trace-py
-  summary: Datadog tracing code
+  summary: Datadog APM client library 
   license: BSD-3-Clause
   license_file: LICENSE.BSD3
 
