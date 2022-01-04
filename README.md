@@ -7,7 +7,7 @@ Package license: BSD-3-Clause
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ddtrace-feedstock/blob/master/LICENSE.txt)
 
-Summary: Datadog tracing code
+Summary: Datadog APM client library
 
 Current build status
 ====================
