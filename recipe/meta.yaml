@@ -1,5 +1,5 @@
 {% set name = "ddtrace" %}
-{% set version = "0.57.0" %}
+{% set version = "0.57.1" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: 8930b3b500ba6a4a2601af15a6f49960be26672b6fabba73876bc683e23ec3bd 
+  sha256: 11e20e1fbb6ce6a4765376287172e3d2ba4f9b436a584a4241bb9cf4679b0134
 
 build:
   number: 0
@@ -49,7 +49,7 @@ test:
 
 about:
   home: https://github.com/DataDog/dd-trace-py
-  summary: Datadog APM client library 
+  summary: Datadog APM client library
   license: BSD-3-Clause
   license_file: LICENSE.BSD3
 
