@@ -21,6 +21,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - skip : True  # [osx]
   host:
     - cython
     - cmake
