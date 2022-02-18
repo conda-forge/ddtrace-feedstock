@@ -12,7 +12,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py==30 or py==31 or py==32 or py==33 or py==34 or osx]
+  skip: true  # [py==30 or py==31 or py==32 or py==33 or py==34]
   entry_points:
     - ddtrace-run = ddtrace.commands.ddtrace_run:main
   script: {{ PYTHON }} -m pip install . -vv
