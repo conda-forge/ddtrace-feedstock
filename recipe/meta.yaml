@@ -12,7 +12,6 @@ source:
 
 build:
   number: 0
-  skip: true  # [py==30 or py==31 or py==32 or py==33 or py==34]
   entry_points:
     - ddtrace-run = ddtrace.commands.ddtrace_run:main
   script: {{ PYTHON }} -m pip install . -vv
@@ -24,9 +23,9 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - cmake
   host:
     - cython
-    - cmake
     - ninja
     - python
     - pip
@@ -34,16 +33,11 @@ requirements:
   run:
     - python
     - pip
-    - enum34  # [py<34]
-    - funcsigs >=1.0.0  # [py==27]
-    - typing  # [py<35]
-    - protobuf >=3,<3.18  # [py<3.6]
-    - protobuf >=3  # [py>=3.6]
+    - protobuf
     - tenacity >=5
     - packaging >=17.1
     - attrs >=19.2.0
     - six >=1.12.0
-    - pep562  # [py<37]
 
 test:
   imports:
