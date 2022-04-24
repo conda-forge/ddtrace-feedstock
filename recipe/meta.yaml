@@ -24,9 +24,9 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
+    - ninja
   host:
     - cython
-    - ninja
     - python
     - pip
     - setuptools_scm[toml] >=4,<6.1
