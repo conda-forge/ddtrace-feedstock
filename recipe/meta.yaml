@@ -1,5 +1,5 @@
 {% set name = "ddtrace" %}
-{% set version = "1.0.1" %}
+{% set version = "1.0.2" %}
 
 
 package:
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: 5e632db6d1e55086a52fc504baee3a31af685efb0d977e42aff013e00d4f8004
+  sha256: 4591c63f01b3c77493270a66ab85acad83abfa0ce3d0292357de603eda585cf9
 
 build:
-  number: 1
+  number: 0
   entry_points:
     - ddtrace-run = ddtrace.commands.ddtrace_run:main
   script: {{ PYTHON }} -m pip install . -vv
