@@ -38,6 +38,7 @@ requirements:
     - packaging >=17.1
     - attrs >=19.2.0
     - six >=1.12.0
+    - ddsketch >=2.0.1
 
 test:
   imports:
