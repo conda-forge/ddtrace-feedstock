@@ -1,5 +1,5 @@
 {% set name = "ddtrace" %}
-{% set version = "1.1.2" %}
+{% set version = "1.2.1" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: 79d1e2288f9df3fa6001fb3448d7fecb9fa8f5c8497773be4f8cad8fe2e1db08
+  sha256: 979c2932db900fb08a7080f7d9dde117a6435c9d648bafbad0d7d5eb1af830ee
 
 build:
   number: 0
@@ -48,7 +48,7 @@ test:
     - pip
   commands:
     - pip check
-  
+
 
 about:
   home: https://github.com/DataDog/dd-trace-py
