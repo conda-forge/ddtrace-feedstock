@@ -39,9 +39,9 @@ requirements:
     - attrs >=19.2.0
     - six >=1.12.0
     - ddsketch >=2.0.1
-    - typing_extensions # [py<38]
-    - bytecode~=0.13.0 # [py37]
-    - bytecode # [py>37]
+    - typing_extensions  # [py<38]
+    - bytecode ~=0.13.0  # [py==37]
+    - bytecode  # [py>37]
 
 test:
   imports:
