@@ -1,5 +1,5 @@
 {% set name = "ddtrace" %}
-{% set version = "1.1.4" %}
+{% set version = "1.2.0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: 5aa5be16d2a1192d7854fec55278fd745e6ad6858f63c7fc75b16cfca875cb62
+  sha256: feb7abe2044e02d0804e39daa5f4bf76fc071b2dcc1af582eaf2a43237025b9b
 
 build:
   number: 0
@@ -33,12 +33,15 @@ requirements:
   run:
     - python
     - pip
-    - protobuf >=3,<4
+    - protobuf >=3
     - tenacity >=5
     - packaging >=17.1
     - attrs >=19.2.0
     - six >=1.12.0
     - ddsketch >=2.0.1
+    - typing_extensions # [py<38]
+    - bytecode~=0.13.0 # [py37]
+    - bytecode # [py>37]
 
 test:
   imports:
