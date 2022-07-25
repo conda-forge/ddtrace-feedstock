@@ -12,7 +12,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [python_impl =='true']
+  skip: true  # [python_impl =='pypy']
   entry_points:
     - ddtrace-run = ddtrace.commands.ddtrace_run:main
   script: {{ PYTHON }} -m pip install . -vv
