@@ -30,7 +30,7 @@ requirements:
     - cython
     - python
     - pip
-    - setuptools_scm[toml] >=4,<6.1
+     setuptools_scm[toml] >=4,<6.1
   run:
     - python
     - pip
@@ -43,6 +43,7 @@ requirements:
     - typing_extensions  # [py<38]
     - bytecode ~=0.13.0  # [py==37]
     - bytecode  # [py>37]
+    - importlib_metadata  # [py<38] 
 
 test:
   imports:
