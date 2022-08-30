@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: ac8f8368c2b8e10934c7dbf070f859313ab59ed9724e643f16fb70b8a3f070ae
+  sha256: 065e18fed48aab20a368105e469eada089bb2c9a1bd236de00d89c52a6cbd7d7
 
 build:
   number: 0
