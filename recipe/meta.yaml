@@ -38,12 +38,17 @@ requirements:
     - tenacity >=5
     - packaging >=17.1
     - attrs >=19.2.0
+    - cattrs
     - six >=1.12.0
     - ddsketch >=2.0.1
     - typing_extensions
     - bytecode ~=0.13.0  # [py==37]
     - bytecode  # [py>37]
     - importlib_metadata  # [py<38] 
+    - jsonschema
+    - xmltodict >=0.12
+    - ipaddress
+    - envier
 
 test:
   imports:
