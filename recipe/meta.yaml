@@ -47,7 +47,6 @@ requirements:
     - importlib_metadata  # [py<38] 
     - jsonschema
     - xmltodict >=0.12
-    - ipaddress
     - envier
 
 test:
