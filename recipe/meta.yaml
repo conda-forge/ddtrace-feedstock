@@ -1,5 +1,4 @@
-{% set name = "ddtrace" %}
-{% set version = "1.5.0" %}
+{% set version = "1.5.2" %}
 
 
 package:
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: 7454803d32de6695daedb9dd4605fdfd09cda70f69e1961e8d9df9e34c46adf4
+  sha256: 2af28170116eaec5bd51300fbf6b930224fc074b30dc00d9612db8f0e8294d32
 
 build:
   number: 0
@@ -48,7 +47,6 @@ requirements:
     - jsonschema
     - xmltodict >=0.12
     - envier
-    - ipaddress
 
 test:
   imports:
