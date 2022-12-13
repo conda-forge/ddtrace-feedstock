@@ -48,6 +48,7 @@ requirements:
     - jsonschema
     - xmltodict >=0.12
     - envier
+    - ipaddress
 
 test:
   imports:
