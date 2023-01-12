@@ -1,5 +1,5 @@
 {% set name = "ddtrace" %}
-{% set version = "1.6.4" %}
+{% set version = "1.7.0" %}
 
 
 package:
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: 33effab386caaaab314e08900b798c02ab5771f88697acb9bf64e5ba98c8009a
+  sha256: 3d3ca687a95b6aa6633b84cef819bfa0c92554614e8ecfcc0da0b5a0bf155d5c
 
 build:
-  number: 1
+  number: 0
   skip: true  # [python_impl =='pypy']
   entry_points:
     - ddtrace-run = ddtrace.commands.ddtrace_run:main
@@ -42,7 +42,7 @@ requirements:
     - six >=1.12.0
     - ddsketch >=2.0.1
     - typing_extensions
-    - bytecode 
+    - bytecode
     - jsonschema
     - xmltodict >=0.12
     - envier
