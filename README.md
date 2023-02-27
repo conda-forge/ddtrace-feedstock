@@ -1,11 +1,11 @@
-About ddtrace
-=============
+About ddtrace-feedstock
+=======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ddtrace-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/DataDog/dd-trace-py
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ddtrace-feedstock/blob/main/LICENSE.txt)
 
 Summary: Datadog APM client library
 
