@@ -30,7 +30,7 @@ requirements:
     - cython
     - python
     - pip
-    - setuptools_scm[toml] >=4,<6.1
+    - setuptools_scm[toml] >=4
   run:
     - python
     - pip
