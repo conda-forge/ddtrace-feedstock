@@ -7,12 +7,12 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: 1b592972e0230510c2c831c4717a50f43ce9360c1d8355d835b246fba5fc83b4
+  git_url: https://github.com/DataDog/dd-trace-py.git
+  git_rev: f90d89dd1cb8dfc9b9f0beb21c816d496a7b0da2 
 
 build:
-  number: 0
-  skip: true  # [python_impl =='pypy' or win]
+  number: 0 
+  skip: true  # [python_impl =='pypy']
   entry_points:
     - ddtrace-run = ddtrace.commands.ddtrace_run:main
   script: {{ PYTHON }} -m pip install . -vv
