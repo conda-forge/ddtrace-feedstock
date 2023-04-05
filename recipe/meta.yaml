@@ -1,5 +1,5 @@
 {% set name = "ddtrace" %}
-{% set version = "1.10.2" %}
+{% set version = "1.11.0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: f79c5e53b8ed3a6bc3dfa05b366f3f3a31da4df259c72fb48bf38a31db785528
+  sha256: 834c64d2ec5b3049789516fcbf58cb5e2dabc77473f089ded88a834c5875cff0
 
 build:
   number: 0
@@ -46,6 +46,7 @@ requirements:
     - jsonschema
     - xmltodict >=0.12
     - envier
+    - opentelemetry-api >=1
 
 test:
   imports:
