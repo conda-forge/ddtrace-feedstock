@@ -46,6 +46,7 @@ requirements:
     - jsonschema
     - xmltodict >=0.12
     - envier
+    - opentelemetry-api >=1
 
 test:
   imports:
