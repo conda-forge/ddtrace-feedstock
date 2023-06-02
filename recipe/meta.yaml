@@ -36,7 +36,6 @@ requirements:
     - pip
     - protobuf >=3
     - tenacity >=5
-    - packaging >=17.1
     - attrs >=20
     - cattrs
     - six >=1.12.0
