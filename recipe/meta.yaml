@@ -41,7 +41,6 @@ requirements:
     - ddsketch >=2.0.1
     - typing_extensions
     - bytecode
-    - jsonschema
     - xmltodict >=0.12
     - envier
     - opentelemetry-api >=1
