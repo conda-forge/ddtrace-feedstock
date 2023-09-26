@@ -11,7 +11,7 @@ source:
   sha256: 96236475f951b527291663060738ccbaf01e30b7b21e2484238dd34d968d5fff
 
 build:
-  number: 0
+  number: 1
   skip: true  # [python_impl =='pypy']
   entry_points:
     - ddtrace-run = ddtrace.commands.ddtrace_run:main
