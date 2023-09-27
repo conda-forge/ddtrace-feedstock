@@ -26,6 +26,7 @@ requirements:
     - {{ compiler('cxx') }}
     - cmake
     - ninja
+    - make
   host:
     - cython <3
     - python
