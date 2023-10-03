@@ -1,5 +1,5 @@
 {% set name = "ddtrace" %}
-{% set version = "1.17.3" %}
+{% set version = "2.0.0" %}
 
 
 package:
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ddtrace-{{ version }}.tar.gz
-  sha256: f21e8870eef6a7d7d428b54e4dba18b302272d60ce6b49cae02edb71bd1a782f
+  sha256: 223501c0c7328b56287b60fe520855b87066f6b5ec0543437a46fcc13337f6bc
 
 build:
-  number: 1
+  number: 0
   skip: true  # [python_impl =='pypy']
   entry_points:
     - ddtrace-run = ddtrace.commands.ddtrace_run:main
@@ -33,6 +33,9 @@ requirements:
     - pip
     - setuptools_scm[toml] >=4
   run:
+    - psutil ==5.6.7
+    - typing-extensions
+    - wrapt ==1.15.0
     - python
     - pip
     - protobuf >=3
