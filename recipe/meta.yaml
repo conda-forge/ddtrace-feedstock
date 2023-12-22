@@ -42,6 +42,7 @@ requirements:
     - opentelemetry-api >=1,
     - protobuf >=3,
     - psutil ==5.6.7,
+    - python >=3.7
     - setuptools  # [py>=312]
     - six >=1.12.0,
     - typing_extensions,
