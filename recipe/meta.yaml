@@ -33,21 +33,20 @@ requirements:
     - pip
     - setuptools_scm[toml] >=4
   run:
-    - psutil ==5.6.7
-    - typing-extensions
-    - wrapt ==1.15.0
-    - python
-    - pip
-    - protobuf >=3
-    - attrs >=20
-    - cattrs
-    - six >=1.12.0
-    - ddsketch >=2.0.1
-    - typing_extensions
+    - attrs>=20,
     - bytecode
-    - xmltodict >=0.12
-    - envier
-    - opentelemetry-api >=1
+    - cattrs,
+    - ddsketch>=2.0.1,
+    - envier,
+    - importlib_metadata  # [py<38]
+    - opentelemetry-api>=1,
+    - protobuf>=3,
+    - psutil==5.6.7,
+    - setuptools  # [py>=312]
+    - six>=1.12.0,
+    - typing_extensions,
+    - wrapt==1.15.0,
+    - xmltodict>=0.12,
 
 test:
   imports:
