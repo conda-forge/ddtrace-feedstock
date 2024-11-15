@@ -1,5 +1,9 @@
+ace:
+- 8.0.1
 c_compiler:
 - vs2019
+c_stdlib:
+- vs
 channel_sources:
 - conda-forge
 channel_targets:
@@ -19,4 +23,3 @@ target_platform:
 zip_keys:
 - - python
   - python_impl
-  - channel_sources
