@@ -18,10 +18,10 @@ build:
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
     - if: unix
       then:
-        - cd src/native/
+        - cd src/core/
         - cargo-bundle-licenses --format yaml --output ../../THIRDPARTY.yml
       else:
-        - cd src\native\
+        - cd src\core\
         - cargo-bundle-licenses --format yaml --output ..\..\THIRDPARTY.yml
   python:
     entry_points:
