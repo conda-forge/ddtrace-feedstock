@@ -16,8 +16,13 @@ build:
   number: 0
   script:
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-    - cd src/native/
-    - cargo-bundle-licenses --format yaml --output ../../THIRDPARTY.yml
+    - if: unix
+      then:
+        - cd src/native/
+        - cargo-bundle-licenses --format yaml --output ../../THIRDPARTY.yml
+      else:
+        - cd src\native\
+        - cargo-bundle-licenses --format yaml --output ..\..\THIRDPARTY.yml
   python:
     entry_points:
       - ddtrace-run = ddtrace.commands.ddtrace_run:main
@@ -31,6 +36,7 @@ requirements:
       - cross-python_${{ target_platform }}
       - setuptools-scm >=4
       - setuptools-rust <2
+      - setuptools
       - cython
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
@@ -38,6 +44,7 @@ requirements:
     - ${{ stdlib("c") }}
     - cmake >=3.24.2,<3.28
     - ninja
+    - git
     - make
   host:
     - python
@@ -45,6 +52,7 @@ requirements:
     - cython
     - cmake >=3.24.2,<3.28
     - setuptools-rust <2
+    - setuptools
     - pip
   run:
     - python
