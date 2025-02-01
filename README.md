@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ddtrace-feedsto
 
 Home: https://ddtrace.readthedocs.io/
 
-Package license: Apache-2.0 AND BSD-3-Clause AND 0BSD
+Package license: 0BSD AND Apache-2.0 AND BSD-3-Clause
 
 Summary: Datadog APM client library
 

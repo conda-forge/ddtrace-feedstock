@@ -21,8 +21,15 @@ build:
 
 requirements:
   build:
+    - if: build_platform != target_platform
+      then:
+      - python
+      - cross-python_${{ target_platform }}
+      - setuptools-rust <2
+      - cython
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
+    - ${{ compiler('rust') }}
     - ${{ stdlib("c") }}
     - cmake
     - ninja
@@ -33,7 +40,7 @@ requirements:
     - cython
     - cmake >=3.24.2,<3.28
     - setuptools-rust <2
-    - setuptools
+    - legacy-cgi >=2.0.0
     - pip
   run:
     - python
@@ -58,7 +65,7 @@ tests:
 
 about:
   summary: Datadog APM client library
-  license: Apache-2.0 AND BSD-3-Clause AND 0BSD
+  license: 0BSD AND Apache-2.0 AND BSD-3-Clause
   homepage: https://ddtrace.readthedocs.io/
   license_file:
     - LICENSE
