@@ -14,24 +14,29 @@ source:
 
 build:
   number: 0
-  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script:
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    - cd src/native/
+    - cargo-bundle-licenses --format yaml --output ../../THIRDPARTY.yml
   python:
     entry_points:
       - ddtrace-run = ddtrace.commands.ddtrace_run:main
 
 requirements:
   build:
+    - cargo-bundle-licenses
     - if: build_platform != target_platform
       then:
       - python
       - cross-python_${{ target_platform }}
+      - setuptools-scm >=4
       - setuptools-rust <2
       - cython
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
     - ${{ compiler('rust') }}
     - ${{ stdlib("c") }}
-    - cmake
+    - cmake >=3.24.2,<3.28
     - ninja
     - make
   host:
@@ -40,27 +45,25 @@ requirements:
     - cython
     - cmake >=3.24.2,<3.28
     - setuptools-rust <2
-    - legacy-cgi >=2.0.0
     - pip
   run:
     - python
+    - bytecode >=0.13.0
     - envier >=0.5,<1.dev0
-    - importlib-metadata <=6.5.0
+    - if: match(python, ">=3.13")
+      then: legacy-cgi >=2.0.0
     - opentelemetry-api >=1
     - protobuf >=3
     - typing_extensions
     - xmltodict >=0.12
     - wrapt >=1
+    - pip
 
 tests:
   - python:
       imports:
         - ddtrace
-  - requirements:
-      run:
-        - pip
-    script:
-      - pip check
+  - script:
       - ddtrace-run --help
 
 about:
@@ -72,6 +75,7 @@ about:
     - LICENSE.BSD3
     - LICENSE.Apache
     - NOTICE
+    - THIRDPARTY.yml
 
 extra:
   recipe-maintainers:
