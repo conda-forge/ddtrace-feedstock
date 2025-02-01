@@ -1,0 +1,34 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 0f2523d5f..a5318a5b8 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+-requires = ["setuptools_scm[toml]>=4", "cython", "cmake>=3.24.2,<3.28; python_version>='3.7'", "setuptools-rust<2"]
++requires = ["setuptools_scm[toml]>=4", "cython", "setuptools-rust<2"]
+ build-backend = "setuptools.build_meta"
+ 
+ [project]
+diff --git a/setup.py b/setup.py
+index 89adf166b..33934e2da 100644
+--- a/setup.py
++++ b/setup.py
+@@ -8,7 +8,6 @@ import sys
+ import sysconfig
+ import tarfile
+ 
+-import cmake
+ from setuptools_rust import Binding
+ from setuptools_rust import RustExtension
+ 
+@@ -405,9 +404,7 @@ class CMakeBuild(build_ext):
+                     "-DCMAKE_OSX_ARCHITECTURES={}".format(";".join(archs)),
+                 ]
+ 
+-        cmake_command = (
+-            Path(cmake.CMAKE_BIN_DIR) / "cmake"
+-        ).resolve()  # explicitly use the cmake provided by the cmake package
++        cmake_command = "cmake"
+         subprocess.run([cmake_command, *cmake_args], cwd=cmake_build_dir, check=True)
+         subprocess.run([cmake_command, "--build", ".", *build_args], cwd=cmake_build_dir, check=True)
+         subprocess.run([cmake_command, "--install", ".", *install_args], cwd=cmake_build_dir, check=True)
