@@ -1,0 +1,92 @@
+context:
+  name: ddtrace
+  version: 2.20.0
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/ddtrace-${{ version }}.tar.gz
+  sha256: f185c6dd88cd04884f0ad27b37f14d837274e8fc4dc43407781334d92d41c3bc
+  patches:
+    - 001-patch-out-cmake-build-dep.patch
+
+build:
+  number: 0
+  script:
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    - if: unix
+      then:
+        - cd src/core/
+        - cargo-bundle-licenses --format yaml --output ../../THIRDPARTY.yml
+      else:
+        - cd src\core\
+        - cargo-bundle-licenses --format yaml --output ..\..\THIRDPARTY.yml
+  python:
+    entry_points:
+      - ddtrace-run = ddtrace.commands.ddtrace_run:main
+
+requirements:
+  build:
+    - cargo-bundle-licenses
+    - if: build_platform != target_platform
+      then:
+      - python
+      - cross-python_${{ target_platform }}
+      - setuptools-scm >=4
+      - setuptools-rust <2
+      - setuptools
+      - cython
+    - ${{ compiler('c') }}
+    - ${{ compiler('cxx') }}
+    - ${{ compiler('rust') }}
+    - ${{ stdlib("c") }}
+    - cmake >=3.24.2,<3.28
+    - ninja
+    - git
+    - make
+  host:
+    - python
+    - setuptools-scm >=4
+    - cython
+    - cmake >=3.24.2,<3.28
+    - setuptools-rust <2
+    - setuptools
+    - pip
+  run:
+    - python
+    - bytecode >=0.13.0
+    - envier >=0.5,<1.dev0
+    - if: match(python, ">=3.13")
+      then: legacy-cgi >=2.0.0
+    - opentelemetry-api >=1
+    - protobuf >=3
+    - typing_extensions
+    - xmltodict >=0.12
+    - wrapt >=1
+    - pip
+
+tests:
+  - python:
+      imports:
+        - ddtrace
+  - script:
+      - ddtrace-run --help
+
+about:
+  summary: Datadog APM client library
+  license: 0BSD AND Apache-2.0 AND BSD-3-Clause
+  homepage: https://ddtrace.readthedocs.io/
+  license_file:
+    - LICENSE
+    - LICENSE.BSD3
+    - LICENSE.Apache
+    - NOTICE
+    - THIRDPARTY.yml
+
+extra:
+  recipe-maintainers:
+    - aymondebroglie
+    - SarvarD
+    - zbowling
