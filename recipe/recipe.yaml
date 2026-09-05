@@ -15,7 +15,7 @@ source:
     - patches/002-disable-ddwaf-download.patch
 
 build:
-  number: 0
+  number: 1
   script:
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
     - cd src/native
