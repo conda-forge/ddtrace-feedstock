@@ -58,6 +58,8 @@ requirements:
     - envier >=0.6.1,<0.7.dev0
     - opentelemetry-api >=1,<2
     - wrapt >=1,!=2.2.0,<3
+    # from unvendoring
+    - libddwaf >=2.0,<2.1
     - ddtrace-internal ==0.1.0
 tests:
   - python:
