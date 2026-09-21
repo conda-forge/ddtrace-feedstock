@@ -1,49 +1,49 @@
 diff --git a/ddtrace/internal/settings/asm.py b/ddtrace/internal/settings/asm.py
-index b75c48ff42..f936ac90a7 100644
+index 247cea08d1..e889e99484 100644
 --- a/ddtrace/internal/settings/asm.py
 +++ b/ddtrace/internal/settings/asm.py
-@@ -45,20 +45,10 @@ def build_libddwaf_filename() -> str:
+@@ -53,8 +53,10 @@ def build_libddwaf_filename() -> str:
+     This is the path of the library bundled in the package, or, when the build
+     did not bundle one, the SONAME for the dynamic linker to resolve.
      """
-     Build the filename of the libddwaf library to load.
-     """
--    _DIRNAME = os.path.dirname(os.path.dirname(__file__))
-     FILE_EXTENSION = {"Linux": "so", "Darwin": "dylib", "Windows": "dll"}[system()]
--    ARCHI = machine().lower()
--    # 32-bit-Python on 64-bit-Windows
--    if system() == "Windows" and ARCHI == "amd64":
--        from sys import maxsize
--
--        if maxsize <= (1 << 32):
--            ARCHI = "x86"
--    TRANSLATE_ARCH = {"amd64": "x64", "i686": "x86_64", "x86": "win32"}
--    ARCHITECTURE = TRANSLATE_ARCH.get(ARCHI, ARCHI)
--    return os.path.join(
--        _DIRNAME, "..", "appsec", "_ddwaf", "libddwaf", ARCHITECTURE, "lib", "libddwaf." + FILE_EXTENSION
--    )
+-    libddwaf_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), "..", "appsec", "_ddwaf", "libddwaf")
+-    return _libddwaf_platform.resolve_library(libddwaf_dir, system(), machine(), sys.maxsize > (1 << 32))
++    FILE_EXTENSION = {"Linux": "so", "Darwin": "dylib", "Windows": "dll"}[system()]
 +    if system() == "Windows":
 +        return "ddwaf." + FILE_EXTENSION
 +    return "libddwaf." + FILE_EXTENSION
  
  
  class ASMConfig(DDConfig):
-@@ -108,7 +98,7 @@ class ASMConfig(DDConfig):
+@@ -101,7 +103,7 @@ class ASMConfig(DDConfig):
      # updated in API Manager enable/disable
      _api_security_active = False
      _asm_libddwaf = build_libddwaf_filename()
--    _asm_libddwaf_available = os.path.exists(_asm_libddwaf)
+-    _asm_libddwaf_available = _libddwaf_platform.is_loadable(_asm_libddwaf, system())
 +    _asm_libddwaf_available = True
      _ddwaf_version: str = "unloaded"
  
      _waf_timeout = DDConfig.var(
 diff --git a/setup.py b/setup.py
-index 13c8bd9442..caac8e6c84 100644
+index 393145b8ed..250bdb0b98 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -667,7 +667,6 @@ class LibraryDownloader(BuildPyCommand):
+@@ -711,18 +711,6 @@ class LibraryDownloader(BuildPyCommand):
          # version changes even when CleanLibraries.remove_artifacts() is skipped.
          if not CustomBuildExt.INCREMENTAL:
              CleanLibraries.remove_artifacts()
--        LibDDWafDownload.run()
+-        if self.no_bundle_libddwaf:
+-            if CURRENT_OS != "Linux":
+-                raise RuntimeError(
+-                    "--no-bundle-libddwaf is only supported on Linux, not on %s: the runtime has no system "
+-                    "library to load there (ddtrace.internal._libddwaf_platform.system_library_names), "
+-                    "so libddwaf must be bundled" % CURRENT_OS
+-                )
+-            print("Not bundling libddwaf: the runtime will load the system library")
+-            shutil.rmtree(LIBDDWAF_DOWNLOAD_DIR, ignore_errors=True)
+-        else:
+-            LibDDWafDownload.run()
+-        self._clean_staged_libddwaf()
          BuildPyCommand.run(self)
          self._strip_build_artifacts()
  
