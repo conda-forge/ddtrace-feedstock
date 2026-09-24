@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: 4.14.0
+  version: 4.15.2
 
 package:
   name: ddtrace
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/d/ddtrace/ddtrace-${{ version }}.tar.gz
-  sha256: 030699f46e0330b4bfd23bedb94d7a07a588638bed27490851f732f045bf96fe
+  sha256: 89ee51677c5aa3852f892afcbc116e58893da66023d9459f5799162b2709edf6
   patches:
     - patches/001-patch-out-cmake-build-dep.patch
     - patches/002-disable-ddwaf-download.patch
@@ -54,13 +54,11 @@ requirements:
     - pip
   run:
     - python
-    # corresponding to the minimum for py3.14
-    - bytecode >=0.17.0,<1
+    - bytecode >=0.15.1,<1
     - envier >=0.6.1,<0.7.dev0
     - opentelemetry-api >=1,<2
     - wrapt >=1,!=2.2.0,<3
-    # from unvendoring
-    - libddwaf >=2.0,<2.1
+    - ddtrace-internal ==0.1.0
 tests:
   - python:
       imports:
